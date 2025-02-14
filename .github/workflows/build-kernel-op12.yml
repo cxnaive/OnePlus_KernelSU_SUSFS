@@ -75,18 +75,18 @@ jobs:
           #cd ./KernelSU-Next/kernel
           #sed -i 's/ccflags-y += -DKSU_VERSION=16/ccflags-y += -DKSU_VERSION=12321/' ./Makefile
           
-      # - name: Apply SUSFS Patches
-      #   run: |
-      #     echo "Changing to configuration directory: $CONFIG..."
-      #     cd "$CONFIG/kernel_platform"
+      - name: Apply SUSFS Patches
+        run: |
+          echo "Changing to configuration directory: $CONFIG..."
+          cd "$CONFIG/kernel_platform"
           
-      #     echo "Applying SUSFS patches..."
+          echo "Applying SUSFS patches..."
           
-      #     # Copy SUSFS patches
-      #     cp ../../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU-Next/
-      #     cp ../../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./common/
-      #     cp ../../susfs4ksu/kernel_patches/fs/* ./common/fs/
-      #     cp ../../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
+          # Copy SUSFS patches
+          # cp ../../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./KernelSU-Next/
+          cp ../../susfs4ksu/kernel_patches/50_add_susfs_in_gki-android14-6.1.patch ./common/
+          cp ../../susfs4ksu/kernel_patches/fs/* ./common/fs/
+          cp ../../susfs4ksu/kernel_patches/include/linux/* ./common/include/linux/
 
       #     cd ./KernelSU-Next
           
@@ -94,8 +94,8 @@ jobs:
       #     patch -p1 --forward < 10_enable_susfs_for_ksu.patch || true
           
       #     # Change to common directory and apply SUSFS patch
-      #     cd ../common
-      #     patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
+          cd ./common
+          patch -p1 < 50_add_susfs_in_gki-android14-6.1.patch || true
           
       # - name: Apply Next-SUSFS Patches
       #   run: |
